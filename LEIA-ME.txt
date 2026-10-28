@@ -1,22 +1,33 @@
-MEU BOLSO — VERSÃO 2
+MEU BOLSO — VERSÃO 4: MIGRAÇÃO SEGURA DO NOTION
 
-Esta versão mantém a mesma chave de armazenamento local da versão anterior e adiciona compras no cartão e estimativa de faturas. Como o código é atualizado no GitHub Pages, seus lançamentos existentes devem continuar no mesmo navegador/dispositivo, mas faça backup antes de substituir arquivos.
+O QUE MUDA
+- Mantém a chave localStorage atual (meubolso_v1), preservando dados locais existentes.
+- Adiciona importação do histórico preparado em importacao_notion.json.
+- A importação é idempotente: IDs de origem já importados são ignorados.
+- O histórico fica separado dos lançamentos novos para evitar somas duplicadas.
+- Parcelas importadas no Cartão de Crédito/Pix no Crédito entram na previsão mensal da fatura, usando o mês da linha como mês de cobrança.
+- A tela Lançamentos exibe o histórico importado (até 100 registros recentes na visualização).
+- É possível desfazer o último lote importado sem remover lançamentos e compras novos.
 
-COMO ATUALIZAR:
-1. No repositório GitHub, abra index.html.
-2. Clique no lápis Edit ou substitua o arquivo usando Add file > Upload files.
-3. Envie o novo index.html e confirme em Commit changes. Você também pode enviar todos os arquivos deste pacote.
-4. Aguarde a atualização do GitHub Pages.
-5. No iPhone, feche o app e abra novamente. Se aparecer a versão antiga, atualize a página no Safari. O cache offline pode demorar a atualizar; se necessário, abra o link no Safari primeiro.
+ANTES DE ATUALIZAR
+1. Abra o Meu Bolso atual no navegador onde usa o app.
+2. Vá a Planejar > Exportar meus dados (JSON) e guarde o backup.
+3. Baixe e extraia este ZIP no computador.
+4. No GitHub, substitua index.html e service-worker.js pelos arquivos deste pacote. Não apague nem altere o localStorage.
+5. Faça Commit changes e aguarde o GitHub Pages publicar.
+6. Abra o site no Safari, atualize a página e confira se seus dados antigos continuam presentes.
 
-NOVO:
-- Adicionar compra no cartão com valor, data, cartão e número de parcelas.
-- Calcular uma estimativa mensal da fatura com base no fechamento do cartão.
-- Ver compras por cartão e excluir compras.
-- A chave local existente é preservada para compatibilidade.
+IMPORTAR O NOTION
+1. No app, vá a Planejar > Importar histórico do Notion (JSON).
+2. Selecione o arquivo importacao_notion.json incluído neste ZIP.
+3. Confira a prévia e toque em Importar histórico.
+4. Na aba Cartões, para calcular as parcelas históricas por cartão, o nome do cartão cadastrado deve coincidir com o campo Conta/Cartão do Notion (ex.: Nubank).
+5. Verifique os totais de cada mês contra as faturas oficiais.
 
-LIMITAÇÕES IMPORTANTES:
-- A estimativa é simplificada e deve ser conferida com a fatura oficial.
-- Ainda não controla pagamento da fatura, juros, estornos, taxas, múltiplas moedas ou regras especiais dos bancos.
-- Os dados continuam locais no navegador, sem sincronização automática.
-- Faça backup e use dados fictícios enquanto testa.
+IMPORTANTE
+- O app ainda guarda dados apenas localmente; não há sincronização em nuvem. Mantenha backups.
+- Não apague o CSV nem a planilha de auditoria.
+- Os registros com data/valor pendentes são preservados e marcados para revisão.
+- O histórico importado não é adicionado automaticamente aos totais gerais de receita/despesa, para evitar duplicar registros já cadastrados manualmente.
+- Datas normalizadas para o primeiro dia do mês devem ser interpretadas como mês de cobrança quando a origem não continha dia específico.
+- A fatura é uma estimativa e deve ser comparada com o banco. Não trata pagamentos de fatura, juros, estornos ou conciliação bancária.
