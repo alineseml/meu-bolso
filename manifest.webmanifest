@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "Meu Bolso",
+  "short_name": "Meu Bolso",
+  "description": "Seu dinheiro, sem mistério.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff9fc",
+  "theme_color": "#fff7fb",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

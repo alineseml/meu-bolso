@@ -1,0 +1,19 @@
+MEU BOLSO — PRIMEIRA VERSÃO
+
+Arquivos:
+- index.html: aplicativo
+- manifest.webmanifest: configurações de instalação como app web
+- service-worker.js: cache básico para abrir a interface offline depois da primeira visita
+- icons/icon.svg: ícone provisório
+
+COMO PUBLICAR:
+1. Crie uma conta em https://github.com, se ainda não tiver.
+2. Crie um repositório novo chamado meu-bolso. Para um primeiro teste, pode marcar Public.
+3. Use Add file > Upload files e envie os arquivos desta pasta, preservando a pasta icons.
+4. Entre em Settings > Pages.
+5. Em Build and deployment, escolha Deploy from a branch; selecione main e / (root); clique Save.
+6. Aguarde a publicação. O endereço aparecerá na própria página Settings > Pages.
+7. Abra o link no iPhone usando Safari; toque em Compartilhar > Adicionar à Tela de Início.
+
+IMPORTANTE:
+Esta é uma versão experimental. Os dados ficam no armazenamento local do navegador e não são sincronizados entre aparelhos. Faça backups e não coloque dados financeiros reais importantes até adicionarmos recuperação/sincronização segura. A interface offline não garante sincronização nem proteção dos dados.
