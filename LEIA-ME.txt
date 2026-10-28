@@ -1,36 +1,22 @@
-MEU BOLSO — VERSÃO 5: TIPO DE DESPESA
+MEU BOLSO — VERSÃO 6: COMPRAS NO CARTÃO NA PÁGINA INICIAL
 
-NOVIDADES
-- Adiciona o campo Tipo de despesa: Variável, Fixa ou Eventual.
-- O campo aparece ao cadastrar uma despesa comum ou uma compra no cartão de crédito.
-- A classificação fica salva junto ao registro e aparece nas listas de lançamentos e compras no cartão.
-- Na importação do Notion, tenta aproveitar a propriedade de origem “Despesa Fixa/Despesa Variável” para classificar os registros históricos.
-- Mantém a mesma chave localStorage (meubolso_v1), preservando os dados locais existentes.
-- Atualiza o cache do service worker para v5.
+CORREÇÃO
+- Compras feitas no cartão agora aparecem em “Últimos movimentos” na página inicial.
+- As compras no cartão também entram no total “Despesas do mês”, usando a data da compra e o valor total da compra.
+- Cada compra aparece identificada com o nome do cartão, categoria, tipo de despesa e número de parcelas quando aplicável.
+- O cálculo das faturas na aba Cartões continua separado. O pagamento da fatura não deve ser cadastrado como uma nova despesa de consumo, para evitar duplicidade.
+- A chave de armazenamento local permanece meubolso_v1, preservando os dados atuais.
+- O cache do service worker foi atualizado para v6.
 
-ATUALIZAÇÃO SEGURA
-1. Abra o Meu Bolso no mesmo navegador/dispositivo onde estão seus dados.
-2. Vá a Planejar > Exportar meus dados (JSON) e guarde um backup.
-3. Extraia este ZIP.
-4. No repositório GitHub, substitua SOMENTE index.html e service-worker.js pelos arquivos deste pacote.
-5. NÃO envie arquivos de dados pessoais (CSV, JSON de importação ou backup) ao GitHub. O pacote de código não inclui seu histórico financeiro.
-6. Faça Commit changes e aguarde a publicação do GitHub Pages.
-7. Abra o site no navegador, atualize a página e confira se os lançamentos e cartões continuam presentes.
-8. Se o site mostrar a versão antiga, feche a aba, abra novamente e faça uma atualização forçada.
-
-IMPORTAR O NOTION
-- O JSON de migração é um arquivo pessoal e deve ficar no seu computador. Se ainda não o salvou, use o arquivo de importação fornecido separadamente, sem adicioná-lo ao repositório.
-- No aplicativo, vá a Planejar > Importar histórico do Notion (JSON), selecione o arquivo e confira a prévia antes de confirmar.
-- A importação ignora IDs de origem já existentes e permite desfazer o último lote.
-
-COMO USAR O TIPO DE DESPESA
-- Fixa: recorrente/previsível (ex.: assinatura ou mensalidade).
-- Variável: muda conforme consumo (ex.: mercado, delivery, transporte).
-- Eventual: pontual ou não recorrente (ex.: manutenção ou presente).
-- A classificação é independente da categoria e da forma de pagamento.
-- Registros antigos que não tenham classificação permanecem preservados; não são classificados automaticamente sem informação de origem.
+ATUALIZAÇÃO
+1. No dispositivo onde você usa o Meu Bolso, exporte um backup JSON em Planejar antes de atualizar.
+2. Extraia este ZIP.
+3. No repositório GitHub Pages, substitua SOMENTE index.html e service-worker.js pelos arquivos deste pacote.
+4. Faça Commit changes e aguarde a publicação.
+5. Abra o site no navegador e atualize. Se necessário, feche a aba, abra novamente e faça uma atualização forçada.
+6. Confira se seus lançamentos e cartões antigos continuam presentes.
 
 IMPORTANTE
-- Os dados ficam salvos localmente neste navegador; não há sincronização em nuvem.
-- Faça backups regulares.
-- Faturas são estimativas e devem ser comparadas com os valores oficiais do banco.
+- Compras no cartão aparecem no resumo pelo valor total e pela data da compra; a fatura mostra os valores previstos de cobrança por mês. Esses dois indicadores respondem a perguntas diferentes.
+- Dados financeiros não estão incluídos no ZIP. Não envie CSVs, backups ou JSON de importação pessoal ao GitHub.
+- O app guarda os dados localmente no navegador/dispositivo e não tem sincronização em nuvem.
