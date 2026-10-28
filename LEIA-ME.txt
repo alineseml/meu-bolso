@@ -1,19 +1,22 @@
-MEU BOLSO — PRIMEIRA VERSÃO
+MEU BOLSO — VERSÃO 2
 
-Arquivos:
-- index.html: aplicativo
-- manifest.webmanifest: configurações de instalação como app web
-- service-worker.js: cache básico para abrir a interface offline depois da primeira visita
-- icons/icon.svg: ícone provisório
+Esta versão mantém a mesma chave de armazenamento local da versão anterior e adiciona compras no cartão e estimativa de faturas. Como o código é atualizado no GitHub Pages, seus lançamentos existentes devem continuar no mesmo navegador/dispositivo, mas faça backup antes de substituir arquivos.
 
-COMO PUBLICAR:
-1. Crie uma conta em https://github.com, se ainda não tiver.
-2. Crie um repositório novo chamado meu-bolso. Para um primeiro teste, pode marcar Public.
-3. Use Add file > Upload files e envie os arquivos desta pasta, preservando a pasta icons.
-4. Entre em Settings > Pages.
-5. Em Build and deployment, escolha Deploy from a branch; selecione main e / (root); clique Save.
-6. Aguarde a publicação. O endereço aparecerá na própria página Settings > Pages.
-7. Abra o link no iPhone usando Safari; toque em Compartilhar > Adicionar à Tela de Início.
+COMO ATUALIZAR:
+1. No repositório GitHub, abra index.html.
+2. Clique no lápis Edit ou substitua o arquivo usando Add file > Upload files.
+3. Envie o novo index.html e confirme em Commit changes. Você também pode enviar todos os arquivos deste pacote.
+4. Aguarde a atualização do GitHub Pages.
+5. No iPhone, feche o app e abra novamente. Se aparecer a versão antiga, atualize a página no Safari. O cache offline pode demorar a atualizar; se necessário, abra o link no Safari primeiro.
 
-IMPORTANTE:
-Esta é uma versão experimental. Os dados ficam no armazenamento local do navegador e não são sincronizados entre aparelhos. Faça backups e não coloque dados financeiros reais importantes até adicionarmos recuperação/sincronização segura. A interface offline não garante sincronização nem proteção dos dados.
+NOVO:
+- Adicionar compra no cartão com valor, data, cartão e número de parcelas.
+- Calcular uma estimativa mensal da fatura com base no fechamento do cartão.
+- Ver compras por cartão e excluir compras.
+- A chave local existente é preservada para compatibilidade.
+
+LIMITAÇÕES IMPORTANTES:
+- A estimativa é simplificada e deve ser conferida com a fatura oficial.
+- Ainda não controla pagamento da fatura, juros, estornos, taxas, múltiplas moedas ou regras especiais dos bancos.
+- Os dados continuam locais no navegador, sem sincronização automática.
+- Faça backup e use dados fictícios enquanto testa.
