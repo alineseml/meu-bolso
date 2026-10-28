@@ -1,33 +1,36 @@
-MEU BOLSO — VERSÃO 4: MIGRAÇÃO SEGURA DO NOTION
+MEU BOLSO — VERSÃO 5: TIPO DE DESPESA
 
-O QUE MUDA
-- Mantém a chave localStorage atual (meubolso_v1), preservando dados locais existentes.
-- Adiciona importação do histórico preparado em importacao_notion.json.
-- A importação é idempotente: IDs de origem já importados são ignorados.
-- O histórico fica separado dos lançamentos novos para evitar somas duplicadas.
-- Parcelas importadas no Cartão de Crédito/Pix no Crédito entram na previsão mensal da fatura, usando o mês da linha como mês de cobrança.
-- A tela Lançamentos exibe o histórico importado (até 100 registros recentes na visualização).
-- É possível desfazer o último lote importado sem remover lançamentos e compras novos.
+NOVIDADES
+- Adiciona o campo Tipo de despesa: Variável, Fixa ou Eventual.
+- O campo aparece ao cadastrar uma despesa comum ou uma compra no cartão de crédito.
+- A classificação fica salva junto ao registro e aparece nas listas de lançamentos e compras no cartão.
+- Na importação do Notion, tenta aproveitar a propriedade de origem “Despesa Fixa/Despesa Variável” para classificar os registros históricos.
+- Mantém a mesma chave localStorage (meubolso_v1), preservando os dados locais existentes.
+- Atualiza o cache do service worker para v5.
 
-ANTES DE ATUALIZAR
-1. Abra o Meu Bolso atual no navegador onde usa o app.
-2. Vá a Planejar > Exportar meus dados (JSON) e guarde o backup.
-3. Baixe e extraia este ZIP no computador.
-4. No GitHub, substitua index.html e service-worker.js pelos arquivos deste pacote. Não apague nem altere o localStorage.
-5. Faça Commit changes e aguarde o GitHub Pages publicar.
-6. Abra o site no Safari, atualize a página e confira se seus dados antigos continuam presentes.
+ATUALIZAÇÃO SEGURA
+1. Abra o Meu Bolso no mesmo navegador/dispositivo onde estão seus dados.
+2. Vá a Planejar > Exportar meus dados (JSON) e guarde um backup.
+3. Extraia este ZIP.
+4. No repositório GitHub, substitua SOMENTE index.html e service-worker.js pelos arquivos deste pacote.
+5. NÃO envie arquivos de dados pessoais (CSV, JSON de importação ou backup) ao GitHub. O pacote de código não inclui seu histórico financeiro.
+6. Faça Commit changes e aguarde a publicação do GitHub Pages.
+7. Abra o site no navegador, atualize a página e confira se os lançamentos e cartões continuam presentes.
+8. Se o site mostrar a versão antiga, feche a aba, abra novamente e faça uma atualização forçada.
 
 IMPORTAR O NOTION
-1. No app, vá a Planejar > Importar histórico do Notion (JSON).
-2. Selecione o arquivo importacao_notion.json incluído neste ZIP.
-3. Confira a prévia e toque em Importar histórico.
-4. Na aba Cartões, para calcular as parcelas históricas por cartão, o nome do cartão cadastrado deve coincidir com o campo Conta/Cartão do Notion (ex.: Nubank).
-5. Verifique os totais de cada mês contra as faturas oficiais.
+- O JSON de migração é um arquivo pessoal e deve ficar no seu computador. Se ainda não o salvou, use o arquivo de importação fornecido separadamente, sem adicioná-lo ao repositório.
+- No aplicativo, vá a Planejar > Importar histórico do Notion (JSON), selecione o arquivo e confira a prévia antes de confirmar.
+- A importação ignora IDs de origem já existentes e permite desfazer o último lote.
+
+COMO USAR O TIPO DE DESPESA
+- Fixa: recorrente/previsível (ex.: assinatura ou mensalidade).
+- Variável: muda conforme consumo (ex.: mercado, delivery, transporte).
+- Eventual: pontual ou não recorrente (ex.: manutenção ou presente).
+- A classificação é independente da categoria e da forma de pagamento.
+- Registros antigos que não tenham classificação permanecem preservados; não são classificados automaticamente sem informação de origem.
 
 IMPORTANTE
-- O app ainda guarda dados apenas localmente; não há sincronização em nuvem. Mantenha backups.
-- Não apague o CSV nem a planilha de auditoria.
-- Os registros com data/valor pendentes são preservados e marcados para revisão.
-- O histórico importado não é adicionado automaticamente aos totais gerais de receita/despesa, para evitar duplicar registros já cadastrados manualmente.
-- Datas normalizadas para o primeiro dia do mês devem ser interpretadas como mês de cobrança quando a origem não continha dia específico.
-- A fatura é uma estimativa e deve ser comparada com o banco. Não trata pagamentos de fatura, juros, estornos ou conciliação bancária.
+- Os dados ficam salvos localmente neste navegador; não há sincronização em nuvem.
+- Faça backups regulares.
+- Faturas são estimativas e devem ser comparadas com os valores oficiais do banco.

@@ -1,4 +1,4 @@
-const CACHE = "meu-bolso-v4";
+const CACHE = "meu-bolso-v5";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icons/icon.svg"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)));
